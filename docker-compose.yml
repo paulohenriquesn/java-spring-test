@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  database:
+    image: "postgres"
+    restart: always
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev
+      POSTGRES_DB: test-spring
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/data/postgres
+    networks:
+      - database
+
+networks:
+  database:
+    driver: bridge
+
+volumes:
+  postgres:
